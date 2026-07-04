@@ -23,7 +23,7 @@ export default function SignIn() {
       let loginEmail = email;
       let loginPassword = password;
       
-      if (email === 'oodosankhanil' && password === 'oodo1234') {
+      if (email === 'oodosankhanil@gmail.com' && password === 'oodo1234!@') {
         loginEmail = 'sankhanilrendi@gmail.com'; // Known working DB user
         loginPassword = 'abirlallol';            // Known working DB password
       }
@@ -35,7 +35,7 @@ export default function SignIn() {
 
       if (authError) {
         // Fallback for complete DB bypass if Supabase is totally unreachable
-        if (email === 'oodosankhanil' && password === 'oodo1234') {
+        if (email === 'oodosankhanil@gmail.com' && password === 'oodo1234!@') {
           document.cookie = `hrms_role=admin; path=/; max-age=${60 * 60 * 24 * 7}`;
           router.push('/admin');
           return;
@@ -185,10 +185,10 @@ export default function SignIn() {
         <div className="mt-4 p-4 bg-white/60 backdrop-blur rounded-xl border border-surface-200/50 text-center flex flex-col gap-1">
           <p className="text-xs text-surface-400 font-medium uppercase tracking-wider mb-1">Demo Credentials</p>
           <p className="text-xs text-surface-500">
-            <span className="font-medium">Email:</span> oodosankhanil
+            <span className="font-medium">Email:</span> oodosankhanil@gmail.com
           </p>
           <p className="text-xs text-surface-500">
-            <span className="font-medium">Password:</span> oodo1234
+            <span className="font-medium">Password:</span> oodo1234!@
           </p>
         </div>
       </div>

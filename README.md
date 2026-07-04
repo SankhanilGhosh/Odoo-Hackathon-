@@ -78,5 +78,5 @@ Open `http://localhost:3000` in your browser.
 ## 🔑 Demo Credentials
 
 ### Admin (HR)
-- **Email**: `oodosankhanil`
-- **Password**: `oodo1234`
+- **Email**: `oodosankhanil@gmail.com`
+- **Password**: `oodo1234!@`
