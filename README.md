@@ -80,3 +80,10 @@ Open `http://localhost:3000` in your browser.
 ### Admin (HR)
 - **Email**: `oodosankhanil@gmail.com`
 - **Password**: `oodo1234!@`
+
+---
+
+## 👥 Contributors
+
+- **Sankhanil Ghosh**
+- **Yasha Begam** (@yashabegam1437)
