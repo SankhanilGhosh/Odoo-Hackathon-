@@ -87,3 +87,5 @@ Open `http://localhost:3000` in your browser.
 
 - **Sankhanil Ghosh**
 - **Yasha Begam** (@yashabegam1437)
+- **Abhirup** (@Abhirup2921)
+- **Sweety Mandal**
