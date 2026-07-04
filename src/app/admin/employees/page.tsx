@@ -41,7 +41,7 @@ export default function EmployeesPage() {
     if (data) {
       setEmployees(data);
       setFiltered(data);
-      const depts = [...new Set(data.map(e => e.department))];
+      const depts = Array.from(new Set(data.map(e => e.department)));
       setDepartments(depts);
     }
     setLoading(false);
