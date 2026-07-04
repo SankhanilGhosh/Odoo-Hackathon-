@@ -18,12 +18,30 @@ export default function SignIn() {
     setError('');
 
     try {
+      // HACKATHON DEMO BYPASS: Map simple demo credentials to real DB user 
+      // so the rest of the app gets a valid Supabase session and works perfectly.
+      let loginEmail = email;
+      let loginPassword = password;
+      
+      if (email === 'oodosankhanil' && password === 'oodo1234') {
+        loginEmail = 'sankhanilrendi@gmail.com'; // Known working DB user
+        loginPassword = 'abirlallol';            // Known working DB password
+      }
+
       const { data, error: authError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+        email: loginEmail,
+        password: loginPassword,
       });
 
-      if (authError) throw authError;
+      if (authError) {
+        // Fallback for complete DB bypass if Supabase is totally unreachable
+        if (email === 'oodosankhanil' && password === 'oodo1234') {
+          document.cookie = `hrms_role=admin; path=/; max-age=${60 * 60 * 24 * 7}`;
+          router.push('/admin');
+          return;
+        }
+        throw authError;
+      }
 
       // Fetch role from employee_profiles
       let { data: profile } = await supabase
@@ -40,7 +58,7 @@ export default function SignIn() {
             user_id: data.user.id,
             employee_id: 'EMP' + Date.now().toString().slice(-6),
             full_name: data.user.email?.split('@')[0] || 'User',
-            email: data.user.email || email,
+            email: data.user.email || loginEmail,
             role: 'admin', // First user gets admin role
             job_title: 'HR Director',
             department: 'Human Resources',
@@ -164,10 +182,13 @@ export default function SignIn() {
         </div>
 
         {/* Demo credentials hint */}
-        <div className="mt-4 p-4 bg-white/60 backdrop-blur rounded-xl border border-surface-200/50 text-center">
+        <div className="mt-4 p-4 bg-white/60 backdrop-blur rounded-xl border border-surface-200/50 text-center flex flex-col gap-1">
           <p className="text-xs text-surface-400 font-medium uppercase tracking-wider mb-1">Demo Credentials</p>
           <p className="text-xs text-surface-500">
-            <span className="font-medium">Admin:</span> odoosankhanil@gmail.com
+            <span className="font-medium">Email:</span> oodosankhanil
+          </p>
+          <p className="text-xs text-surface-500">
+            <span className="font-medium">Password:</span> oodo1234
           </p>
         </div>
       </div>
